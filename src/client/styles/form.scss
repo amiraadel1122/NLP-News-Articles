@@ -1,0 +1,17 @@
+@import "main";
+@import "variables";
+form {
+  input[type="url"] {
+    border: 1px solid grey;
+    border-radius: 10px;
+    width: 75%;
+    padding: 15px;
+  }
+  input[type="submit"] {
+    padding: 15px;
+    border-radius: 10%;
+    cursor: pointer;
+    background-color: $basic-color;
+    color: #fff;
+  }
+}
