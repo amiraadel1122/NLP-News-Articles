@@ -1,24 +1,53 @@
-var path = require('path')
-const express = require('express')
+var path = require("path");
+const express = require("express");
 //const mockAPIResponse = require('./mockAPI.js')
 
-const app = express()
+const app = express();
 
-app.use(express.static('dist'))
+app.use(express.static("dist"));
 
-console.log(__dirname)
+const bodyParser = require("body-parser");
 
-app.get('/', (req, res) => {
-    res.sendFile('dist/index.html' )
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+// Cors for cross origin allowance
+const cors = require("cors");
+app.use(cors());
+console.log(__dirname);
 
-})
+const fetch = require("node-fetch");
+
+//API CREDENTIALS
+const APIKey = "d29134ff7fe20e0f5823675527f9503c";
+const baseURL = "https://api.meaningcloud.com/sentiment-2.1?key=";
 
 // designates what port the app will listen to for incoming requests
 app.listen(8080, () => {
-    console.log('Example app listening on port 8080!')
-})
+  console.log("Example app listening on port 8080!");
+});
 
- app.get('/test', (req, res) => {
-    // res.send('lll')
-   console.log('text')
- })
+app.post("/Apidata", async (request, response) => {
+  console.log("loool");
+  let input = request.body.text;
+  console.log(request.body.text);
+  const res = await fetch(
+    `https://api.meaningcloud.com/sentiment-2.1?key=${APIKey}&of=json&txt=${request.body.text}&lang=en`
+  );
+  console.log(res);
+  try {
+    let data = await res.json();
+    console.log(data);
+  } catch (error) {
+    console.log("error");
+  }
+  console.log(res);
+  let obj = {
+    subjectivity: data.subjectivity,
+    polarity: data.polarity,
+    confidence: data.confidence,
+  };
+});
+
+app.get("/", (request, response) => {
+  response.sendFile("dist/index.html");
+});
