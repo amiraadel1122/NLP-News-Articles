@@ -1,40 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nlp-News</title>
 </head>
+
 <body>
-   
+
     <header>
         <div class="">
-        <h1>NLP - Evaluate News Articles</h1>
+            <h1>NLP - Evaluate News Articles</h1>
         </div>
-       
+
     </header>
 
     <main>
-      <section>
-             <form class="" onsubmit="return Client.handleSubmit(event)">
-                 <input id="userUrl" type="url" name="input" value=""  placeholder="Enter url">
-                 <input type="submit" name="" value="Evaluate Article" onclick="return Client.handleSubmit(event)" >
-             </form>
-         <section>
+        <section>
+            <form class="" onsubmit="return Client.handleSubmit(event)">
+                <input id="userUrl" type="url" name="input" value="" placeholder="Enter url">
+                <input type="submit" name="" value="Evaluate Article" onclick="return Client.handleSubmit(event)">
+            </form>
+            <section>
 
-        <section class="evalute-result">
-            <h2>Form Results:</h2>
-            <div id="results">
-                <h4>Polarity</h4>
-                <label id="polarity"></label>
-                <h4>Subjectivity</h4>
-                <label id="subjectivity"></label>
-                <h4>Confidence</h4>
-                <label id="confidence"></label>
-                <h4>Agreement</h4>
-                <label id="agreement"></label>
-            </div>
-        </section>
+                <section class="evalute-result">
+                    <h2>Form Results:</h2>
+                    <div id="results">
+
+                        <h4>Polarity</h4>
+                        <label id="polarity"></label>
+                        <h4>Subjectivity</h4>
+                        <label id="subjectivity"></label>
+                        <h4>Confidence</h4>
+                        <label id="confidence"></label>
+                        <h4>Agreement</h4>
+                        <label id="agreement"></label>
+                        <h4>Irony</h4>
+                        <label id="irony"></label>
+                    </div>
+                </section>
     </main>
 
     <footer>
@@ -50,6 +55,7 @@
                 navigator.serviceWorker.register('/service-worker.js');
             });
         }
-       </script>
+    </script>
 </body>
+
 </html>
