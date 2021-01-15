@@ -9,7 +9,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
-  entry: "./src/js/index.js",
+  entry: "./src/client/js/index.js",
   optimization: {
     minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
     },
@@ -35,7 +35,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/views/index.html",
+      template: "./src/client/views/index.html",
       filename: "./index.html",
     }),
     new CleanWebpackPlugin({
