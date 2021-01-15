@@ -28,6 +28,7 @@ app.listen(8080, () => {
 
 app.post("/Apidata", async (request, response) => {
   console.log("loool");
+  let data;
   let input = request.body.text;
   console.log(request.body.text);
   const res = await fetch(
@@ -35,7 +36,7 @@ app.post("/Apidata", async (request, response) => {
   );
   console.log(res);
   try {
-    let data = await res.json();
+     data = await res.json();
     console.log(data);
   } catch (error) {
     console.log("error");
@@ -43,9 +44,13 @@ app.post("/Apidata", async (request, response) => {
   console.log(res);
   let obj = {
     subjectivity: data.subjectivity,
-    polarity: data.polarity,
+    polarity: data.score_tag,
     confidence: data.confidence,
+    agreement:data.agreement,
+
   };
+response.status(200).json(obj);
+  
 });
 
 app.get("/", (request, response) => {

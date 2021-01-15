@@ -19,7 +19,10 @@ function handleSubmit(event) {
     .then((res) => res.json())
     .then(function (res) {
       console.log("here from client");
-      document.getElementById("results").innerHTML = res.message;
+      document.getElementById("polarity").innerHTML = `${res.polarity}`;
+      document.getElementById("subjectivity").innerHTML = `${res.subjectivity}`;
+      document.getElementById("confidence").innerHTML = `${res.confidence}`;
+      document.getElementById("agreement").innerHTML = `${res.agreement}`;
     });
 }
 
